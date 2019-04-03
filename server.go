@@ -15,7 +15,7 @@ type Backend struct{}
 
 // Login handles a login command with username and password.
 func (bkd *Backend) Login(state *smtp.ConnectionState, username, password string) (smtp.Session, error) {
-	if username != "username" || password != "password" {
+	if username != "no-reply@minis.com" || password != "kvzuqqubgicgbicj" {
 		return nil, errors.New("Invalid username or password")
 	}
 	return &Session{}, nil
@@ -65,7 +65,7 @@ func NewServer() {
 	be := &Backend{}
 	s := smtp.NewServer(be)
 	s.Addr = ":1025"
-	s.Domain = "minis.app"
+	s.Domain = "smtp.minis.app"
 	s.ReadTimeout = 10 * time.Second
 	s.WriteTimeout = 10 * time.Second
 	s.MaxMessageBytes = 1024 * 1024
